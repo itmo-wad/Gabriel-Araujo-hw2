@@ -66,8 +66,8 @@ def signup():
             flash('Invalid Password', 'danger')
             return redirect(request.url)
         db.users.insert_one({"username": username, "password": generate_password_hash(password), "profile_pic": ''})
-        print(f"{username} - {password} SALVO")
-        return redirect('/login')
+        flash('Account Created!', 'success')
+        return redirect(url_for('login'))
 
 @app.route('/profile')
 def myProfile():
